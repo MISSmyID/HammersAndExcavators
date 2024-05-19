@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "examplemod",
+  "id": "hammersr",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This mod aims to help new BTA modders.",
+  "name": "Hammers and Excavators Mod",
+  "description": "Simple hammers & excavators mod by MISSmyID",
   "authors": [
-    "Turnip Labs"
+		"MISSmyID"
   ],
   "contact": {
     "homepage": "",
@@ -19,20 +19,20 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-			"turniplabs.examplemod.ExampleMod"
+			"hammersr.HammersAndExcavators"
     ],
 		"beforeGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+			"hammersr.HammersAndExcavators"
 		],
 		"afterGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+			"hammersr.HammersAndExcavators"
 		],
 		"recipesReady": [
-			"turniplabs.examplemod.ExampleMod"
+			"hammersr.HammersAndExcavators"
 		]
 	},
   "mixins": [
-      "examplemod.mixins.json"
+		"hammersr.mixins.json"
   ],
 
   "depends": {
