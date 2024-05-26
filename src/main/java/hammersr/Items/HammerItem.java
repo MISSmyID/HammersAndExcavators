@@ -41,22 +41,24 @@ public class HammerItem extends ItemTool {
 	}
 
 	protected void MineBlock(int x, int y, int z, World world, EntityLiving player) {
-		Item GoldItem = HammersAndExcavators.hammerGold ;
+		Item GoldItem = HammersAndExcavators.hammerGold;
 		Item heldItem = player.getHeldItem().getItem();
-		if (world.getBlock(x, y, z) != null && !isBlockMatchToBlacklist(world.getBlock(x, y, z).id, new BlockLists().BlockHammersBlacklist))
-			if (heldItem != GoldItem) {
-				ItemStack[] itemToDrop = world.getBlock(x, y, z).getBreakResult(world, EnumDropCause.PROPER_TOOL, x, y, z, world.getBlockMetadata(x, y, z), world.getBlockTileEntity(x, y, z));
-				world.setBlockWithNotify(x, y, z, 0);
-				if (itemToDrop != null) {
-					Arrays.stream(itemToDrop).filter(Objects::nonNull).forEach(expDrop -> world.dropItem(x, y, z, expDrop));
+		if (!world.isClientSide) {
+			if (world.getBlock(x, y, z) != null && !isBlockMatchToBlacklist(world.getBlock(x, y, z).id, new BlockLists().BlockHammersBlacklist))
+				if (heldItem != GoldItem) {
+					ItemStack[] itemToDrop = world.getBlock(x, y, z).getBreakResult(world, EnumDropCause.PROPER_TOOL, x, y, z, world.getBlockMetadata(x, y, z), world.getBlockTileEntity(x, y, z));
+					world.setBlockWithNotify(x, y, z, 0);
+					if (itemToDrop != null) {
+						Arrays.stream(itemToDrop).filter(Objects::nonNull).forEach(expDrop -> world.dropItem(x, y, z, expDrop));
+					}
+				} else {
+					ItemStack[] itemToDrop = world.getBlock(x, y, z).getBreakResult(world, EnumDropCause.SILK_TOUCH, x, y, z, world.getBlockMetadata(x, y, z), world.getBlockTileEntity(x, y, z));
+					world.setBlockWithNotify(x, y, z, 0);
+					if (itemToDrop != null) {
+						Arrays.stream(itemToDrop).filter(Objects::nonNull).forEach(expDrop -> world.dropItem(x, y, z, expDrop));
+					}
 				}
-			} else {
-				ItemStack[] itemToDrop = world.getBlock(x, y, z).getBreakResult(world, EnumDropCause.SILK_TOUCH, x, y, z, world.getBlockMetadata(x, y, z), world.getBlockTileEntity(x, y, z));
-				world.setBlockWithNotify(x, y, z, 0);
-				if (itemToDrop != null) {
-					Arrays.stream(itemToDrop).filter(Objects::nonNull).forEach(expDrop -> world.dropItem(x, y, z, expDrop));
-				}
-			}
+		}
 	}
 
 	private static boolean isBlockMatchToBlacklist(int BlockId, List<Integer> list) {
@@ -70,7 +72,6 @@ public class HammerItem extends ItemTool {
 		int x, y, z;
 		int Squ = 0;
 		int Cu = 0 ;
-		int Cusight;
 		Item heldItem = entityliving.getHeldItem().getItem();
 		if(heldItem == HammersAndExcavators.hammerWooden ||heldItem == HammersAndExcavators.hammerStone||heldItem == HammersAndExcavators.hammerGold){
 			Squ = 1;

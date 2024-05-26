@@ -18,6 +18,12 @@ import turniplabs.halplibe.util.RecipeEntrypoint;
 public class HammersAndExcavators implements ModInitializer, GameStartEntrypoint, RecipeEntrypoint {
     public static final String MOD_ID = "hammersr";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+	private int blockID(String blockName) {
+		return HammersAndExcavatorsConfig.cfg.getInt("Block IDs." + blockName);
+	}
+	private int itemID(String blockName) {
+		return HammersAndExcavatorsConfig.cfg.getInt("Item IDs." + blockName);
+	}
 	public static BlockBuilder standardBlockBuilder = new BlockBuilder(MOD_ID);
 	public static Item hammerWooden;
 	public static Item hammerStone;
@@ -34,9 +40,7 @@ public class HammersAndExcavators implements ModInitializer, GameStartEntrypoint
 	public static Block diamondSteelBlock;
 	public static Block HardenedCobble;
 	public static Block HardenedLog;
-	//public static Item diamondSteelBlock;
 
-	//private HammersAndExcavators() {}
 	@Override
 	public void initNamespaces() {
 		RecipeBuilder.initNameSpace(MOD_ID);
@@ -50,22 +54,23 @@ public class HammersAndExcavators implements ModInitializer, GameStartEntrypoint
 	@Override
 	public void beforeGameStart() {
 
-		hammerWooden = ItemHelper.createItem(MOD_ID,new HammerItem("WoodenHammer",32006, ToolMaterial.wood),"wooden_hammer.png");
-		hammerStone = ItemHelper.createItem(MOD_ID,new HammerItem("StoneHammer",32007, ToolMaterial.stone),"stone_hammer.png");
-		hammerIron = ItemHelper.createItem(MOD_ID,new HammerItem("IronHammer",32008, ToolMaterial.iron),"iron_hammer.png");
-		hammerGold = ItemHelper.createItem(MOD_ID,new HammerItem("GoldHammer",32009, ToolMaterial.gold),"golden_hammer.png");
-		hammerSteel = ItemHelper.createItem(MOD_ID,new HammerItem("SteelHammer",32010, ToolMaterial.steel),"steel_hammer.png");
-		hammerDiamond = ItemHelper.createItem(MOD_ID,new HammerItem("DiamondHammer",32011, ToolMaterial.diamond),"diamond_hammer.png");
+		hammerWooden = ItemHelper.createItem(MOD_ID,new HammerItem("WoodenHammer",itemID("hammerWooden"), ToolMaterial.wood),"wooden_hammer.png");
+		hammerStone = ItemHelper.createItem(MOD_ID,new HammerItem("StoneHammer",itemID("hammerStone"), ToolMaterial.stone),"stone_hammer.png");
+		hammerIron = ItemHelper.createItem(MOD_ID,new HammerItem("IronHammer",itemID("hammerIron"), ToolMaterial.iron),"iron_hammer.png");
+		hammerGold = ItemHelper.createItem(MOD_ID,new HammerItem("GoldHammer",itemID("hammerGold"), ToolMaterial.gold),"golden_hammer.png");
+		hammerSteel = ItemHelper.createItem(MOD_ID,new HammerItem("SteelHammer",itemID("hammerSteel"), ToolMaterial.steel),"steel_hammer.png");
+		hammerDiamond = ItemHelper.createItem(MOD_ID,new HammerItem("DiamondHammer",itemID("hammerDiamond"), ToolMaterial.diamond),"diamond_hammer.png");
 
-		excavatorWooden = ItemHelper.createItem(MOD_ID,new ExcavatorItem("WoodenExcavator",32012, ToolMaterial.wood),"wooden_excavator.png");
-		excavatorStone = ItemHelper.createItem(MOD_ID,new ExcavatorItem("StoneExcavator",32013, ToolMaterial.stone),"stone_excavator.png");
-		excavatorIron = ItemHelper.createItem(MOD_ID,new ExcavatorItem("IronExcavator",32014, ToolMaterial.iron),"iron_excavator.png");
-		excavatorGold = ItemHelper.createItem(MOD_ID,new ExcavatorItem("GoldExcavator",32015, ToolMaterial.gold),"golden_excavator.png");
-		excavatorSteel = ItemHelper.createItem(MOD_ID,new ExcavatorItem("SteelExcavator",32016, ToolMaterial.steel),"steel_excavator.png");
-		excavatorDiamond = ItemHelper.createItem(MOD_ID,new ExcavatorItem("DiamondExcavator",32017, ToolMaterial.diamond),"diamond_excavator.png");
-		diamondSteelBlock = standardBlockBuilder.setTextures("diamondSteelBlock.png").build(new Block("diamondSteelBlock",3100, Material.metal));
-		HardenedCobble = standardBlockBuilder.setTextures("HardenedCobbleStone.png").build(new Block("HardenedCobble",3101, Material.stone));
-		HardenedLog = standardBlockBuilder.setSideTextures("HardenedLogSides.png").setTopBottomTexture("HardenedLogTopBottom.png").build(new Block("HardenedLog",3102, Material.woodWet));
+		excavatorWooden = ItemHelper.createItem(MOD_ID,new ExcavatorItem("WoodenExcavator",itemID("excavatorWooden"), ToolMaterial.wood),"wooden_excavator.png");
+		excavatorStone = ItemHelper.createItem(MOD_ID,new ExcavatorItem("StoneExcavator",itemID("excavatorStone"), ToolMaterial.stone),"stone_excavator.png");
+		excavatorIron = ItemHelper.createItem(MOD_ID,new ExcavatorItem("IronExcavator",itemID("excavatorIron"), ToolMaterial.iron),"iron_excavator.png");
+		excavatorGold = ItemHelper.createItem(MOD_ID,new ExcavatorItem("GoldExcavator",itemID("excavatorGold"), ToolMaterial.gold),"golden_excavator.png");
+		excavatorSteel = ItemHelper.createItem(MOD_ID,new ExcavatorItem("SteelExcavator",itemID("excavatorSteel"), ToolMaterial.steel),"steel_excavator.png");
+		excavatorDiamond = ItemHelper.createItem(MOD_ID,new ExcavatorItem("DiamondExcavator",itemID("excavatorDiamond"), ToolMaterial.diamond),"diamond_excavator.png");
+
+		diamondSteelBlock = standardBlockBuilder.setTextures("diamondSteelBlock.png").build(new Block("diamondSteelBlock",blockID("diamondSteelBlock"), Material.metal));
+		HardenedCobble = standardBlockBuilder.setTextures("HardenedCobbleStone.png").build(new Block("HardenedCobble",blockID("HardenedCobble"), Material.stone));
+		HardenedLog = standardBlockBuilder.setSideTextures("HardenedLogSides.png").setTopBottomTexture("HardenedLogTopBottom.png").build(new Block("HardenedLog",blockID("HardenedLog"), Material.woodWet));
 
 
 	}
