@@ -1,6 +1,4 @@
 package hammersr.Items;
-
-import hammersr.HammersAndExcavators;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.tag.BlockTags;
 import net.minecraft.core.entity.EntityLiving;
@@ -45,7 +43,7 @@ public class ExcavatorItem extends ItemTool {
 		Item heldItem = entityplayer.getHeldItem().getItem();
 		Block block = Block.pathDirt;
 		int Squ;
-		if(heldItem == HammersAndExcavators.excavatorSteel ||heldItem == HammersAndExcavators.excavatorDiamond) {
+		if(heldItem == HAEItems.excavatorSteel ||heldItem == HAEItems.excavatorDiamond) {
 			Squ = 2;
 		}else{
 			Squ = 1;
@@ -65,7 +63,7 @@ public class ExcavatorItem extends ItemTool {
 	}
 
 	protected void MineBlock(int x, int y, int z, World world, EntityLiving player) {
-		Item GoldItem = HammersAndExcavators.excavatorGold;
+		Item GoldItem = HAEItems.excavatorGold;
 		Item heldItem = player.getHeldItem().getItem();
 		if (world.getBlock(x, y, z) != null && isBlockMatchTolist(world.getBlock(x, y, z).id, new BlockLists().BlockExcavatorsWhiteList))
 			if (heldItem != GoldItem) {
@@ -93,7 +91,7 @@ public class ExcavatorItem extends ItemTool {
 		Item heldItem = entityliving.getHeldItem().getItem();
 		int Off1, Off2;
 		int Squ;
-		if(heldItem == HammersAndExcavators.excavatorSteel ||heldItem == HammersAndExcavators.excavatorDiamond) {
+		if(heldItem == HAEItems.excavatorSteel ||heldItem == HAEItems.excavatorDiamond) {
 			Squ = 2;
 		}else{
 			Squ = 1;

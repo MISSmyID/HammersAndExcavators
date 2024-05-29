@@ -1,6 +1,5 @@
 package hammersr.Items;
 
-import hammersr.HammersAndExcavators;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.tag.BlockTags;
 import net.minecraft.core.entity.EntityLiving;
@@ -12,12 +11,10 @@ import net.minecraft.core.item.tool.ItemTool;
 import net.minecraft.core.item.tool.ItemToolPickaxe;
 import net.minecraft.core.util.helper.Direction;
 import net.minecraft.core.world.World;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-
 
 public class HammerItem extends ItemTool {
 	public static Map<Block, Integer> miningLevels;
@@ -41,7 +38,7 @@ public class HammerItem extends ItemTool {
 	}
 
 	protected void MineBlock(int x, int y, int z, World world, EntityLiving player) {
-		Item GoldItem = HammersAndExcavators.hammerGold;
+		Item GoldItem = HAEItems.hammerGold;
 		Item heldItem = player.getHeldItem().getItem();
 		if (!world.isClientSide) {
 			if (world.getBlock(x, y, z) != null && !isBlockMatchToBlacklist(world.getBlock(x, y, z).id, new BlockLists().BlockHammersBlacklist))
@@ -73,16 +70,15 @@ public class HammerItem extends ItemTool {
 		int Squ = 0;
 		int Cu = 0 ;
 		Item heldItem = entityliving.getHeldItem().getItem();
-		if(heldItem == HammersAndExcavators.hammerWooden ||heldItem == HammersAndExcavators.hammerStone||heldItem == HammersAndExcavators.hammerGold){
+		if(heldItem == HAEItems.hammerWooden ||heldItem == HAEItems.hammerStone||heldItem == HAEItems.hammerGold){
 			Squ = 1;
-			Cu = 0;
-		} else if (heldItem == HammersAndExcavators.hammerIron) {
+		} else if (heldItem == HAEItems.hammerIron) {
 			Squ = 1;
 			Cu = 2;
-		}else if(heldItem == HammersAndExcavators.hammerSteel){
+		}else if(heldItem == HAEItems.hammerSteel){
 			Squ = 2;
 			Cu = 3;
-		} else if (heldItem == HammersAndExcavators.hammerDiamond) {
+		} else if (heldItem == HAEItems.hammerDiamond) {
 			Squ = 2;
 			Cu = 5;
 		}
