@@ -8,7 +8,6 @@ import net.minecraft.core.item.Item;
 import net.minecraft.core.item.material.ToolMaterial;
 import turniplabs.halplibe.helper.BlockBuilder;
 import turniplabs.halplibe.helper.ItemBuilder;
-import turniplabs.halplibe.helper.ItemHelper;
 
 public class HAEItems {
 	public static Item hammerWooden;
