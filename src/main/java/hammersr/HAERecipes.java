@@ -17,13 +17,17 @@ public class HAERecipes {
 	}
 
 	private static int repairStackRecipeId = 0;
-	public static void initRecipes(){
+	public static void addRepairableRecipe(Item inItem, Item repairMaterial){
+		Registries.RECIPES.addCustomRecipe("minecraft:workbench/repair_stackable_recipe_" + repairStackRecipeId, new RecipeEntryRepairable(inItem, repairMaterial));
+		++repairStackRecipeId;
+	}
+	public static void initRecipes() {
 		//repairKits
-		RecipeBuilder.Shaped(MOD_ID).setShape(" / ","# #","###").addInput('/',Item.stick).addInput('#', Block.planksOak).create("repairkitEmpty",new ItemStack(HAEItems.repairkitEmpty,1));
-		RecipeBuilder.Shapeless(MOD_ID).addInput(HAEItems.repairkitEmpty).addInput(Item.ingotIron).addInput(Item.ingotIron).create("repairkitIron",new ItemStack(HAEItems.repairkitIron,1));
-		RecipeBuilder.Shapeless(MOD_ID).addInput(HAEItems.repairkitEmpty).addInput(Item.ingotGold).addInput(Item.ingotGold).create("repairkitGold",new ItemStack(HAEItems.repairkitGold,1));
-		RecipeBuilder.Shapeless(MOD_ID).addInput(HAEItems.repairkitEmpty).addInput(Item.ingotSteel).addInput(Item.ingotSteel).create("repairkitSteel",new ItemStack(HAEItems.repairkitSteel,1));
-		RecipeBuilder.Shapeless(MOD_ID).addInput(HAEItems.repairkitEmpty).addInput(Item.diamond).addInput(Item.diamond).create("repairkitDiamond",new ItemStack(HAEItems.repairkitDiamond,1));
+		RecipeBuilder.Shaped(MOD_ID).setShape(" / ", "# #", "###").addInput('/', Item.stick).addInput('#', Block.planksOak).create("repairkitEmpty", new ItemStack(HAEItems.repairkitEmpty, 1));
+		RecipeBuilder.Shapeless(MOD_ID).addInput(HAEItems.repairkitEmpty).addInput(Item.ingotIron).addInput(Item.ingotIron).create("repairkitIron", new ItemStack(HAEItems.repairkitIron, 1));
+		RecipeBuilder.Shapeless(MOD_ID).addInput(HAEItems.repairkitEmpty).addInput(Item.ingotGold).addInput(Item.ingotGold).create("repairkitGold", new ItemStack(HAEItems.repairkitGold, 1));
+		RecipeBuilder.Shapeless(MOD_ID).addInput(HAEItems.repairkitEmpty).addInput(Item.ingotSteel).addInput(Item.ingotSteel).create("repairkitSteel", new ItemStack(HAEItems.repairkitSteel, 1));
+		RecipeBuilder.Shapeless(MOD_ID).addInput(HAEItems.repairkitEmpty).addInput(Item.diamond).addInput(Item.diamond).create("repairkitDiamond", new ItemStack(HAEItems.repairkitDiamond, 1));
 
 		//Blocks
 		RecipeBuilder.Shaped(MOD_ID).setShape("BIB", "IOI", "BIB").addInput('B',Item.diamond).addInput('O',Block.blockSteel).addInput('I',Item.ingotSteel).create("DiamondSteelBlock",new ItemStack(HAEItems.diamondSteelBlock, 1));
@@ -37,7 +41,6 @@ public class HAERecipes {
 		RecipeBuilder.Shaped(MOD_ID).setShape("BOB", "OSO", " S ").addInput('B',Block.blockGold).addInput('O', Item.ingotGold).addInput('S',Item.stick).create("GoldHammer", new ItemStack(HAEItems.hammerGold, 1));
 		RecipeBuilder.Shaped(MOD_ID).setShape("BOB", "OSO", " S ").addInput('B',Block.blockSteel).addInput('O', Item.ingotSteel).addInput('S',Item.stick).create("SteelHammer", new ItemStack(HAEItems.hammerSteel, 1));
 		RecipeBuilder.Shaped(MOD_ID).setShape("BOB", "OSO", " S ").addInput('B', HAEItems.diamondSteelBlock).addInput('O', Item.diamond).addInput('S',Item.stick).create("DiamondHammer", new ItemStack(HAEItems.hammerDiamond, 1));
-
 
 		//Repair
 		addRepairableRecipe(HAEItems.hammerIron, HAEItems.repairkitIron);
@@ -59,9 +62,5 @@ public class HAERecipes {
 		RecipeBuilder.Shaped(MOD_ID).setShape(" O ", "BSB", " S ").addInput('B',Block.blockSteel).addInput('O', Item.ingotSteel).addInput('S',Item.stick).create("excavatorSteel", new ItemStack(HAEItems.excavatorSteel, 1));
 		RecipeBuilder.Shaped(MOD_ID).setShape(" O ", "BSB", " S ").addInput('B', HAEItems.diamondSteelBlock).addInput('O', Item.diamond).addInput('S',Item.stick).create("excavatorDiamond", new ItemStack(HAEItems.excavatorDiamond, 1));
 
-	}
-	public static void addRepairableRecipe(Item inItem, Item repairMaterial) {
-		Registries.RECIPES.addCustomRecipe("minecraft:workbench/repair_stackable_recipe_" + repairStackRecipeId, new RecipeEntryRepairable(inItem, repairMaterial));
-		++repairStackRecipeId;
 	}
 }
