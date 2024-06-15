@@ -14,11 +14,6 @@ public class HammersAndExcavators implements ModInitializer, GameStartEntrypoint
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override
-	public void initNamespaces() {
-		RecipeBuilder.initNameSpace(MOD_ID);
-	}
-
-	@Override
     public void onInitialize() {
         LOGGER.info("HammersAndExcavators initialized.");
     }

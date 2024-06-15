@@ -53,7 +53,7 @@ public class ExcavatorItem extends ItemTool {
 				int i1 = world.getBlockId(blockX +x, blockY, blockZ + y);
 				int j1 = world.getBlockId(blockX, blockY + 1, blockZ);
 				if (side != Side.BOTTOM && j1 == 0 && (i1 == Block.grass.id || i1 == Block.dirt.id || i1 == Block.grassRetro.id || i1 == Block.farmlandDirt.id)) {
-					world.playBlockSoundEffect(entityplayer, (float) blockX + 0.5F, (float) blockY + 0.5F, (float) blockZ + 0.5F, Block.blocksList[i1], EnumBlockSoundEffectType.PLACE);
+					//world.playBlockSoundEffect(entityplayer, (float) blockX + 0.5F, (float) blockY + 0.5F, (float) blockZ + 0.5F, Block.blocksList[i1], EnumBlockSoundEffectType.PLACE);
 					world.setBlockWithNotify(blockX + x, blockY, blockZ+y, block.id);
 
 				}
